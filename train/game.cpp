@@ -1,6 +1,6 @@
 #include "game.h"
 
-game::game(float a, str file) : player(new agent(TP_MASKS,a)), savefile(file) {}
+game::game(float a, str file) : savefile(file), player(new agent(TP_MASKS,a)) {}
 
 game::~game() {
     if(!savefile.empty())
@@ -8,15 +8,17 @@ game::~game() {
     delete player;
 }
 
-void game::run(bool vis, bool train) {
-    cur_board.assign(cur_board.size(),0);
+void game::run(int iter, bool vis, bool train) {
+    cur_board = vi(16,0);
     make_tile(cur_board,2);
     CUR_SCORE = 0;
     bool running = 1;
     while(running) {
         //  Visualize board
-        if(vis)
+        if(vis) {
             print(cur_board);
+            std::cout << iter << std::endl;
+        }
         int action = player->choose_action(cur_board);
         //  Terminal state
         if(action == -1) {
@@ -39,12 +41,14 @@ void game::run(bool vis, bool train) {
 }
 
 void game::make_tile(vi& board, int ct) {
-    if(!can_place(board))
-        return;
-    int index = rand() % 16;
-    while(board[index])
-        index = rand() % 16;
-    board[index] = tile_val();
+    F0R(_,ct) {
+        if(!can_place(board))
+            return;
+        int index = rand() % 16;
+        while(board[index])
+            index = rand() % 16;
+        board[index] = tile_val();
+    }
 }
 
 void game::print(vi& board) {

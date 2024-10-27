@@ -84,6 +84,10 @@
         F0R(i,src.size())
             dest[i] = src[i];
     }
+
+    inline int log2(int x) {
+        return x ? (31-clz(x)) : 0;
+    }
 #endif
 
 #ifndef TUPLE_MASKS

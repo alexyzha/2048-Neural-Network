@@ -4,7 +4,8 @@ class game {
 public:
     game(float a, str file = "");
     ~game();
-    void run(bool vis = 1, bool train = 1);
+    void run(int iter, bool vis = 1, bool train = 1);
+    void diagnostic();
 private:
     int MAX_SCORE = 0;
     int CUR_SCORE = 0;
@@ -14,7 +15,6 @@ private:
     agent* player;
     void make_tile(vi& board, int ct = 1);
     void print(vi& board);
-    void diagnostic();
     int tile_val();
     int move(int dir);
     bool can_place(vi& board);

@@ -5,7 +5,7 @@ agent::agent(const V<u16>& masks, float a) : ALPHA(a) {
     LUTS = MAT<float>(NUM_TPL);
     LUT_CONFIG = MAT<int>(NUM_TPL);
     F0R(i,NUM_TPL) {
-        int weights = 1 << (MAX_P2+1);
+        int weights = std::pow(MAX_P2,4);
         LUTS[i] = V<float>(weights,0.0f);
         LUT_CONFIG[i] = V<int>(pct(masks[i]));
         int index = 0;
@@ -39,7 +39,7 @@ void agent::save(str filepath) {
 
 int agent::choose_action(vi& state) {
     int action = -1;
-    float best = -1;
+    float best = -1.0f;
     F0R(i,4) {
         float r = evaluate(state,i);
         if(r > best)
@@ -67,12 +67,12 @@ void agent::learn(vi& afterstate, vi& nextstate) {
 
 int agent::key(vi& state, int i) {
     int key = 0;
-    int base = MAX_P2+1;
-    each(tile,LUT_CONFIG[i])
-        key += state[tile],
-        key *= base;
-    //  Debug
-    assert(key < (1<<base));
+    int base = 1;
+    each(tile,LUT_CONFIG[i]) {
+        assert(log2(state[tile]) < MAX_P2);
+        key += log2(state[tile])*base;
+        base *= MAX_P2;
+    }
     return key;
 }
 
@@ -81,7 +81,7 @@ float agent::evaluate(vi& state, int action) {
     int r = move(state,afterstate,action);
     //  If afterstate = state, then illegal move
     if(is_equal(state,afterstate))
-        return 0;
+        return -2.0f;
     //  Calculate reward from moving, get v(s')
     return r + v(afterstate);
 }

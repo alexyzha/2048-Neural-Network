@@ -2,9 +2,9 @@ CXX = g++
 CXXFLAGS = -Wall -std=c++11
 TARGET = main
 SRCS = main.cpp game.cpp agent.cpp
-HEADERS = game.h agent.h macro.h
+HEADERS = agent.h game.h macro.h
 OBJDIR = ./obj
-OBJS = $(patsubst %.cpp,$(OBJDIR)/%lo,$(SRCS))
+OBJS = $(patsubst %.cpp,$(OBJDIR)/%.o,$(SRCS))
 
 all: $(TARGET)
 
