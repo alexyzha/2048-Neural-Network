@@ -35,6 +35,9 @@ void game::run(int iter, bool vis, bool train) {
         } else 
             make_tile(cur_board);
     }
+    //  Ensure
+    print(cur_board);
+    std::cout << iter << std::endl;
     MAX_SCORE = std::max(MAX_SCORE,CUR_SCORE);
     each(i,cur_board)
         MAX_TILE = std::max(MAX_TILE,i);

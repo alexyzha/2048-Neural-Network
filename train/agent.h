@@ -1,5 +1,3 @@
-#include <vector>
-#include <inttypes.h>
 #include "macro.h"
 
 class agent {
