@@ -51,6 +51,9 @@
     }
 #endif
 
+/*
+ *  Util for moving in all 4 directions
+ */
 #ifndef DIRECTIONS
 #define DIRECTIONS
     const vi DIR = {
@@ -69,6 +72,9 @@
     const int MASK_OFF = 0x7FFFFFFF;
 #endif
 
+/*
+ *  Random util, includes board and also log util
+ */
 #ifndef HELPERS
 #define HELPERS
     inline bool is_equal(vi& a, vi&b) {
@@ -90,6 +96,9 @@
     }
 #endif
 
+/*
+ *  All tuple configs used
+ */
 #ifndef TUPLE_MASKS
 #define TUPLE_MASKS
     const V<u16> TP_MASKS {

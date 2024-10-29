@@ -58,6 +58,10 @@ I used `Selenium` (`Python`) and sockets to create a bridge between the bot (`C+
 
 ![online test video](visuals/full-online.gif)
 
+# Additions
+
+Multithreaded training/testing (maybe CUDA when I finally get around to learning that).
+
 # References
 
 1. K. Matsuzaki, "Systematic selection of N-tuple networks with consideration of interinfluence for game 2048," 2016 Conference on Technologies and Applications of Artificial Intelligence (TAAI), Hsinchu, Taiwan, 2016, pp. 186-193, [doi](10.1109/TAAI.2016.7880154)

@@ -15,3 +15,7 @@ private:
     int move(vi& state, vi& afterstate, int action);
     float v(vi& state);
 };
+
+/*
+ *  For all code comments refer to ../../train
+ */

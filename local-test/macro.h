@@ -89,3 +89,7 @@
         return x ? (31-clz(x)) : 0;
     }
 #endif
+
+/*
+ *  For all code comments refer to ../../train
+ */

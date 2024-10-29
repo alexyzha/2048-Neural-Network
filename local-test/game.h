@@ -21,3 +21,7 @@ private:
     int move(int dir);
     bool can_place(vi& board);
 };
+
+/*
+ *  For all code comments refer to ../../train
+ */
