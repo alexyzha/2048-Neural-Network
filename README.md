@@ -1,11 +1,16 @@
 # N-Tuple Neural Network Plays 2048
 
-The largest tile you can realistically reach in the game [`2048`](https://2048.io) is `131,072`. However, unless you're an ultra-sweat or something, you probably only care about reaching `2048` and maybe `4096` or even `8192`. The average human being with a brain is able to do this fairly easily, but what about a computer?
+The largest tile you can realistically reach in the game [`2048`](https://2048.io) is `131072`. However, unless you're an ultra-sweat or something, you probably only care about reaching `2048` and maybe `4096` or even `8192`. The average human being with a brain is able to do this fairly easily, but what about a computer?
 
-There are a total of `12^16` possible states for the `2048` board for values of tiles ranging from 2 to 2048. While this is nowhere near the amount of possible states for games like Chess or Go, it does mean that an AI agent of some kind is needed to "solve" `2048`.
+There are a total of `12^16` possible states for the `2048` board for values of tiles ranging from `2` to `2048`. While this is nowhere near the amount of possible states for games like Chess or Go, it does mean that an AI agent or a heuristic-driven algorithm of some kind is needed to "beat" `2048`. Traditionally, algorithms like `minimax` and `expectimax` have been used to try and beat `2048`. However, it has been proven that one of the best structures for an autonomous `2048` player is an N-tuple network. This repository contains `C++` code that trains and tests a N-tuple `2048` bot (referred to as bot).
 
-Throughout many studies over the years, it has been proven that one of the best structures for an autonomous `2048` player is an N-tuple network.
+# Theory
 
+Tuples can be thought of as contiguous subdivisions of the 2048 board.
+
+# Tuple Organization
+
+The code for training a bot 
 
 
 
