@@ -23,7 +23,7 @@ This results in `15^4 = 50625` total combinations for a tuple. There are `17` tu
 0 0 0 0
 ```
 
-Let's use the tuple with the scope `{0,1,4,5}` as an example. This tuple essentially creates a key using the values `{0,2,2,0}` (in that order) and outputs a weight corresponding the the "value" of that specific section of the board when the board is in its current state. I will explain more in detail what "value" means later. For now, just understand that each tuple takes some of the values on the board and outputs a weight based on those values. The overall value we receive from all `17` tuples will then be averaged for a final output representing the tuples' collective opinion on a state. All the weights in a tuple are initialized as `0.0f` (since the tuple has learned nothing), and over a few hundred thousand games, each of these weights will be updated based on what the bot learned from moving in certain directions.
+Let's use the tuple with the scope `{0,1,4,5}` as an example. This tuple essentially creates a key using the values `{0,2,2,0}` (in that order) and outputs a weight corresponding the the "value" of that specific section of the board when the board is in its current state. I will explain more in detail what "value" means later. For now, just understand that each tuple takes some of the values on the board and outputs a weight based on those values. The overall value we receive from all `17` tuples will then be averaged for a final output representing the tuples' collective opinion on a state. All the weights in a tuple are initialized as `0.0f` (since the tuple has learned nothing), and over a few hundred thousand games, each of these weights will be updated based on what the bot learned from moving in certain directions. Also, values on the board are scaled down using the function `log2(tile value)` during key creation so they can actually be processed.
 
 # Bot Decision Making/Learning
 
@@ -48,7 +48,7 @@ In the `train` folder, you will find all of the `C++` code I used to train the b
 
 # Local (Offline) Testing
 
-The game logic remains the same. The game now keeps track of the number of new games started, as well as average score and win rate. These can be viewed with the `diagnostic()` function. The bot (`agent.h/.cpp`) doesn't have a `learn()` function or `alpha` anymore, since those aren't needed. Its constructor is also changed to only accept a string `path`, a path to a file that contains bot weights (this can be found at `local-test/bot/infile.txt` or `online-test/server/bot/infile.txt`). Some results of local testing are shown below.
+The game logic remains the same. The game now keeps track of the number of new games started, as well as average score and win rate. These can be viewed with the `diagnostic()` function. The bot (`agent.h/.cpp`) doesn't have a `learn()` function or `alpha` anymore, since those aren't needed. Its constructor is also changed to only accept a string `path`, a path to a file that contains bot weights (this can be found at `local-test/bot/infile.txt` or `online-test/server/bot/infile.txt`). The results of local testing are shown below (`1000` games).
 
 ![local test results](visuals/local-1000.png)
 
