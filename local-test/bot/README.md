@@ -1,0 +1,1 @@
+`infile.txt` is generated from the pure asm bot
